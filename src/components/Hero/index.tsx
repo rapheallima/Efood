@@ -8,6 +8,7 @@ import {
 } from './styles';
 import logo from '../../assets/images/logo.png';
 import cart from '../../assets/images/cart.svg';
+import { Link } from 'react-router-dom';
 
 type Props = {
   background: 'white' | 'orange';
@@ -31,7 +32,7 @@ const Hero = ({ background }: Props) => {
             <nav>
               <Links>
                 <LinkItem>
-                  <a href="">Restaurantes</a>
+                  <Link to="/">Restaurantes</Link>
                 </LinkItem>
               </Links>
             </nav>
