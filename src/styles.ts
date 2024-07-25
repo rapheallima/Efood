@@ -29,9 +29,7 @@ export const GlobalCss = createGlobalStyle`
 
 
     .container {
-      display: block;
-  max-width: 1366px;
-  max-height: 2148px;
+  display: block;
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -43,10 +41,6 @@ export const GlobalCss = createGlobalStyle`
 
 export const Container = styled.div`
   display: block;
-  max-width: 1366px;
-  max-height: 2148px;
-  width: 100%;
-  height: 100%;
   margin: 0 auto;
   background-color: ${cores.cinza};
   border: 2px solid ${cores.bege};

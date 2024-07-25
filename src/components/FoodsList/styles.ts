@@ -3,12 +3,10 @@ import styled from 'styled-components';
 import { CardProps } from '../Foods/styles';
 
 export const Container = styled.section`
-  max-width: 1366px;
-  max-height: 2148px;
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 export const List = styled.ul<CardProps>`
@@ -16,5 +14,5 @@ export const List = styled.ul<CardProps>`
   grid-template-columns: ${({ background }) =>
     background === 'white' ? '1fr 1fr' : '1fr 1fr 1fr'};
   column-gap: 50px;
-  margin-bottom: 80px;
+  margin-bottom: 32px;
 `;

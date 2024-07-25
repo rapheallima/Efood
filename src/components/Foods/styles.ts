@@ -17,9 +17,8 @@ export const Card = styled.div<CardProps>`
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   position: relative;
-  padding-bottom: 329px;
 `;
 
 export const Title = styled.h3<CardProps>`

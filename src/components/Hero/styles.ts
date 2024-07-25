@@ -23,7 +23,6 @@ export const FundoHero = styled.header<CardProps>`
     font-weight: 900;
     line-height: 21.09px;
     text-align: center;
-    padding-left: 109px;
   }
 `;
 
@@ -55,11 +54,12 @@ export const Links = styled.ul`
 `;
 
 export const LinkItem = styled.li`
-  margin-right: 16px;
+  margin-left: 357px;
 `;
 
 export const LinkCart = styled.a`
   display: flex;
+  margin-right: 292px;
 
   img {
     margin-left: 16px;
