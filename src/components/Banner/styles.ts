@@ -8,6 +8,7 @@ export const Image = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 250px;
+  padding-left: 23%;
 `;
 
 export const Title = styled.h2`
@@ -15,10 +16,8 @@ export const Title = styled.h2`
   font-size: 32px;
   font-weight: 900;
   line-height: 37.5px;
-  text-align: center;
   color: ${cores.branca};
   width: 676px;
-  margin-left: 213px;
 `;
 
 export const SubTitle = styled.p`
@@ -26,12 +25,10 @@ export const SubTitle = styled.p`
   font-size: 32px;
   font-weight: 100;
   line-height: 37.5px;
-  text-align: left;
   color: ${cores.branca};
   opacity: 64%;
   padding-top: 29px;
   padding-bottom: 149px;
-  margin-left: 398px;
 `;
 
 export default Image;

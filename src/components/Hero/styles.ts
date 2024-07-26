@@ -48,21 +48,13 @@ export const TextHero = styled.p`
   margin: auto;
 `;
 
-export const Links = styled.ul`
+export const Links = styled.div`
   display: flex;
-  margin-left: 40px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 23%;
 `;
 
-export const LinkItem = styled.li`
-  margin-left: 357px;
-`;
+export const LinkItem = styled.li``;
 
-export const LinkCart = styled.a`
-  display: flex;
-  margin-right: 292px;
-
-  img {
-    margin-left: 16px;
-    padding-right: 109px;
-  }
-`;
+export const LinkCart = styled.a``;

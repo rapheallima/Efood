@@ -18,7 +18,7 @@ export const FootImg = styled.img<Props>`
   height: 57.5px;
   top: ${({ background }) => (background === 'white' ? '1883px' : '1449px')};
   left: 50%;
-  margin-top: 30px;
+  margin-top: ${({ background }) => (background === 'white' ? '78px' : '30px')};
 
   transform: translate(-50%, -50%);
 `;
