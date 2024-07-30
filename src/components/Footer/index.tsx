@@ -2,7 +2,7 @@ import logo from '../../assets/images/logo.png';
 import face from '../../assets/images/facebook.png';
 import insta from '../../assets/images/instagram.png';
 import twitter from '../../assets/images/twitter.png';
-import { Container, FootImg, Redes, TextFooter } from './styles';
+import { Container, Redes, TextFooter } from './styles';
 
 export type Props = {
   background: 'white' | 'orange';
@@ -10,7 +10,7 @@ export type Props = {
 
 const Footer = ({ background }: Props) => (
   <Container>
-    <FootImg background={background} src={logo} alt="Logo efood" />
+    <img src={logo} alt="Logo efood" />
     <Redes>
       <li>
         <img src={insta} alt="" />

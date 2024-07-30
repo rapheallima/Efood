@@ -4,11 +4,18 @@ import { cores } from '../../styles';
 export const Image = styled.div`
   width: 100%;
   height: 280px;
-  display: block;
+  display: flex;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 250px;
-  padding-left: 23%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 53px;
+`;
+
+export const ContainerPerfil = styled.div`
+  width: 1030px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.h2`
@@ -27,8 +34,7 @@ export const SubTitle = styled.p`
   line-height: 37.5px;
   color: ${cores.branca};
   opacity: 64%;
-  padding-top: 29px;
-  padding-bottom: 149px;
+  padding-bottom: 156.5px;
 `;
 
 export default Image;

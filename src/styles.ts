@@ -18,6 +18,10 @@ export const GlobalCss = createGlobalStyle`
     a {
       color: ${cores.laranja}
     }
+
+    p {
+      color: ${cores.laranja}
+    }
   }
 
   body {
@@ -51,5 +55,4 @@ export const Container = styled.div`
 
 export const Lista = styled.div`
   margin: auto;
-  margin-top: -180px;
 `;

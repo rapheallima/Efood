@@ -7,13 +7,11 @@ export const Container = styled.section<CardProps>`
   height: 100%;
   display: flex;
   padding: ${({ background }) => (background === 'white' ? '24px' : '16px')};
-  padding-right: 23%;
-  padding-left: 23%;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const List = styled.ul<CardProps>`
-  display: grid;
-  grid-template-columns: ${({ background }) =>
-    background === 'white' ? '1fr 1fr' : '1fr 1fr 1fr'};
+  display: flex;
   column-gap: ${({ background }) => (background === 'white' ? '80px' : '32px')};
 `;

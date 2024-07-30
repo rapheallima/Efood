@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Hero from './components/Hero';
+import Hero from './components/HeroHome';
+import HeroP from './components/HeroPerfil';
 
 import Home from './components/pages/Home';
 import Perfil from './components/pages/Perfil';
@@ -21,7 +22,7 @@ const Rotas = () => (
       path="/perfil"
       element={
         <>
-          <Hero background="orange" />
+          <HeroP background="orange" />
           <Banner /> <Perfil />
           <Footer background="orange" />
         </>
