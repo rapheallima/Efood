@@ -9,16 +9,13 @@ export type Props = {
 };
 
 const Cardapio = ({ pratos, background }: Props) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedPrato, setSelectedPrato] = useState<CardapioItem | null>(null);
 
-  const handleImageClick = (image: string, item: CardapioItem) => {
-    setSelectedImage(image);
+  const handleShowModal = (item: CardapioItem) => {
     setSelectedPrato(item);
   };
 
   const handleCloseModal = () => {
-    setSelectedImage(null);
     setSelectedPrato(null);
   };
 
@@ -41,19 +38,19 @@ const Cardapio = ({ pratos, background }: Props) => {
             id={item.id}
             btnType="button"
             background={background}
-            onClick={() => handleImageClick(item.foto, item)}
+            onClick={() => handleShowModal(item)}
             tags={[]}
             tipo={item.porcao}
             nota={formatPrice(item.preco)}
-            btnText="Adicionar ao carrinho"
+            btnText="Mais detalhes"
           />
         ))}
       </List>
-      {selectedImage && selectedPrato && (
+      {selectedPrato && (
         <Modal>
           <ModalContent background={background}>
             <CloseButton onClick={handleCloseModal}>X</CloseButton>
-            <img src={selectedImage} alt="Enlarged view" />
+            <img src={selectedPrato.foto} alt="Enlarged view" />
             <p>
               <h2>{selectedPrato.nome}</h2>
               <br />
@@ -63,7 +60,7 @@ const Cardapio = ({ pratos, background }: Props) => {
               <br />
               <br />
               <span>
-                Adicionar ao carrinhho - {formatPrice(selectedPrato.preco)}
+                Adicionar ao carrinho - {formatPrice(selectedPrato.preco)}
               </span>
             </p>
           </ModalContent>

@@ -18,6 +18,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   height: 24px;
   line-height: 24.1px;
   border: none;
+  cursor: pointer;
 `;
 
 export const ButtonLink = styled(Link)<ButtonContainerProps>`

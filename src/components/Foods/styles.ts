@@ -21,7 +21,6 @@ export const Card = styled.div<CardProps>`
   position: relative;
 
   > img {
-    cursor: ${({ $background }) => ($background === 'white' ? '' : 'pointer')};
     width: 100%;
     height: ${({ $background }) =>
       $background === 'white' ? '217px' : '167px'};

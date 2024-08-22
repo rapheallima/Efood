@@ -55,7 +55,7 @@ const Foods = ({
   };
   return (
     <Card $background={background}>
-      <img src={image} alt={name} onClick={onClick} />
+      <img src={image} alt={name} />
 
       <Tags>
         {tags.map((tag, index) => {
@@ -94,6 +94,7 @@ const Foods = ({
         title="Clique aqui"
         size={btnText === 'Saiba mais' ? 'small' : 'big'}
         to={`/perfil/${id}`}
+        onClick={onClick}
       >
         {btnText}
       </Button>
