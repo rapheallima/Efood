@@ -8,8 +8,8 @@ type Props = {
 const Hero = ({ background }: Props) => {
   return (
     <>
-      <Header background={background}>
-        <FundoHero background={background}>
+      <Header $background={background}>
+        <FundoHero $background={background}>
           <StyledLink to="/">Restaurantes</StyledLink>
           <img src={logo} alt="efood" />
           <p>0 - produto(s) no carrinho</p>

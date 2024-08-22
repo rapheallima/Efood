@@ -1,41 +1,44 @@
-import Prato from '../../../models/Pratos';
 import { Lista } from '../../../styles';
 import FoodsList from '../../FoodsList';
 
-import sushi from '../../../assets/images/sushi.png';
-import trattoria from '../../../assets/images/trattoria.png';
+import { useEffect, useState } from 'react';
 
-const home: Prato[] = [
-  {
-    id: 1,
-    tags: ['Destaque da semana', 'Japonesa'],
-    image: sushi,
-    nota: '4.9',
-    name: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!',
-    btn: 'Saiba mais',
-  },
-  {
-    id: 2,
-    tags: ['Italiana'],
-    image: trattoria,
-    nota: '4.6',
-    name: 'La Dolce Vita Trattoria',
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    btn: 'Saiba mais',
-  },
-];
+export type CardapioItem = {
+  foto: string;
+  preco: number;
+  id: string;
+  nome: string;
+  descricao: string;
+  porcao: string;
+};
 
-const Home = () => (
-  <>
-    <Lista>
-      <FoodsList pratos={home} background="white" />
-      <FoodsList pratos={home} background="white" />
-      <FoodsList pratos={home} background="white" />
-    </Lista>
-  </>
-);
+export type Restaurante = {
+  id: string;
+  titulo: string;
+  destacado: boolean;
+  tipo: string;
+  avaliacao: string;
+  descricao: string;
+  capa: string;
+  cardapio: CardapioItem[];
+};
+
+const Home = () => {
+  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => setRestaurantes(res));
+  }, []);
+
+  return (
+    <>
+      <Lista>
+        <FoodsList background="white" pratos={restaurantes} />
+      </Lista>
+    </>
+  );
+};
 
 export default Home;

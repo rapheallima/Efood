@@ -1,49 +1,37 @@
-import Prato from '../../../models/Pratos';
+import { useEffect, useState } from 'react';
 import { Lista } from '../../../styles';
-import FoodsList from '../../FoodsList';
 
-import pizza from '../../../assets/images/pizza.png';
+import { Restaurante } from '../Home';
+import { useParams } from 'react-router-dom';
+import Cardapio from '../../Cardapio';
+import Banner from '../../Banner';
 
-const perfil: Prato[] = [
-  {
-    id: 1,
-    tags: [],
-    image: pizza,
-    nota: '',
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    btn: 'Adicionar ao carrinho',
-  },
-  {
-    id: 2,
-    tags: [],
-    image: pizza,
-    nota: '',
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    btn: 'Adicionar ao carrinho',
-  },
-  {
-    id: 3,
-    tags: [],
-    image: pizza,
-    nota: '',
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    btn: 'Adicionar ao carrinho',
-  },
-];
+const Perfil = () => {
+  const { id } = useParams();
 
-const Perfil = () => (
-  <>
-    <Lista>
-      <FoodsList pratos={perfil} background="orange" />
-      <FoodsList pratos={perfil} background="orange" />
-    </Lista>
-  </>
-);
+  const [restaurante, setRestaurante] = useState<Restaurante | null>(null);
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setRestaurante(res))
+      .catch((error) => {
+        console.error('Erro ao buscar o restaurante:', error);
+      });
+  }, [id]);
+
+  if (!restaurante) {
+    return <h3>Carregando...</h3>;
+  }
+
+  return (
+    <>
+      <Lista>
+        <Banner prato={restaurante} />
+        <Cardapio background="orange" pratos={restaurante.cardapio} />
+      </Lista>
+    </>
+  );
+};
 
 export default Perfil;

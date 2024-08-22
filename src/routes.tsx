@@ -5,7 +5,7 @@ import HeroP from './components/HeroPerfil';
 
 import Home from './components/pages/Home';
 import Perfil from './components/pages/Perfil';
-import Banner from './components/Banner';
+
 import Footer from './components/Footer';
 
 const Rotas = () => (
@@ -14,16 +14,18 @@ const Rotas = () => (
       path="/"
       element={
         <>
-          <Hero background="white" /> <Home /> <Footer background="white" />
+          <Hero background="white" />
+          <Home />
+          <Footer background="white" />
         </>
       }
     />
     <Route
-      path="/perfil"
+      path="/perfil/:id"
       element={
         <>
           <HeroP background="orange" />
-          <Banner /> <Perfil />
+          <Perfil />
           <Footer background="orange" />
         </>
       }

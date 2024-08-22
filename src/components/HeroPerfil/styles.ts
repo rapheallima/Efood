@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export const Header = styled.div<CardProps>`
   display: flex;
   width: 100%;
-  height: ${({ background }) => (background === 'white' ? '384px' : '186px')};
+  height: ${({ $background }) => ($background === 'white' ? '384px' : '186px')};
   background-image: url(${fundo});
   align-items: center;
   justify-content: center;

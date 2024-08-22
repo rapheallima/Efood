@@ -16,9 +16,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   text-align: center;
   width: ${({ size }) => (size === 'big' ? 'auto' : '82px')};
   height: 24px;
-  margin: 8px;
   line-height: 24.1px;
-  border-radius: 8px;
+  border: none;
 `;
 
 export const ButtonLink = styled(Link)<ButtonContainerProps>`
@@ -31,9 +30,8 @@ export const ButtonLink = styled(Link)<ButtonContainerProps>`
   text-align: center;
   width: ${({ size }) => (size === 'big' ? 'auto' : '82px')};
   height: 24px;
-  margin: 8px;
+  margin-left: 8px;
   line-height: 24.1px;
-  border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
 `;

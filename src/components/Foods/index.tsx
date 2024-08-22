@@ -14,18 +14,22 @@ import { TagContainer } from '../Tag/styles';
 import Button from '../Button';
 
 export type Props = {
-  tags: string[];
+  tags: boolean[];
+  tipo: string;
   image: string;
   nota: string;
   name: string;
   description: string;
   btnText: string;
+  id: string;
   btnType: 'button' | 'link';
   background: 'white' | 'orange';
+  onClick?: () => void;
 };
 
 const Foods = ({
   tags,
+  tipo,
   image,
   nota,
   name,
@@ -33,41 +37,68 @@ const Foods = ({
   btnText,
   btnType,
   background,
-}: Props) => (
-  <Card background={background}>
-    <img src={image} />
+  onClick,
+  id,
+}: Props) => {
+  const getDescricao = (
+    description: string,
+    background: 'white' | 'orange',
+  ) => {
+    if (background === 'white') {
+      return description.length > 95
+        ? description.slice(0, 220) + '...'
+        : description;
+    }
+    return description.length > 95
+      ? description.slice(0, 145) + '...'
+      : description;
+  };
+  return (
+    <Card $background={background}>
+      <img src={image} alt={name} onClick={onClick} />
 
-    <Tags>
-      {tags.map((tag, index) => (
-        <TagContainer
-          key={index}
-          size={tag === 'Destaque da semana' ? 'big' : 'small'}
-        >
-          {tag}
-        </TagContainer>
-      ))}
-    </Tags>
-    <Info>
-      <Title background={background}>{name}</Title>
-      {nota && (
-        <Nota>
-          <NotaText background={background}>{nota}</NotaText>
-          <EstrelaIcon src={estrela} />
-        </Nota>
-      )}
-    </Info>
-    <Descript background={background}>{description}</Descript>
-    <Button
-      type={btnType}
-      title="Clique aqui"
-      size={btnText === 'Saiba mais' ? 'small' : 'big'}
-      to="/perfil"
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClick={() => {}}
-    >
-      {btnText}
-    </Button>
-  </Card>
-);
+      <Tags>
+        {tags.map((tag, index) => {
+          if (typeof tag === 'boolean') {
+            return tag ? (
+              <>
+                <TagContainer key={`destaque-${index}`} size="big">
+                  Destaque da semana
+                </TagContainer>
+                <TagContainer key={`tipo-${index}`} size="small">
+                  {tipo}
+                </TagContainer>
+              </>
+            ) : (
+              <TagContainer key={index} size="small">
+                {tipo}
+              </TagContainer>
+            );
+          }
+        })}
+      </Tags>
+      <Info $background={background}>
+        <Title $background={background}>{name}</Title>
+        {nota && (
+          <Nota $background={background}>
+            <NotaText $background={background}>{nota}</NotaText>
+            <EstrelaIcon src={estrela} />
+          </Nota>
+        )}
+      </Info>
+      <Descript $background={background}>
+        {getDescricao(description, background)}
+      </Descript>
+      <Button
+        type={btnType}
+        title="Clique aqui"
+        size={btnText === 'Saiba mais' ? 'small' : 'big'}
+        to={`/perfil/${id}`}
+      >
+        {btnText}
+      </Button>
+    </Card>
+  );
+};
 
 export default Foods;

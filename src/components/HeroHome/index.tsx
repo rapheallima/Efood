@@ -10,8 +10,8 @@ const Hero = ({ background }: Props) => {
 
   return (
     <>
-      <Header background={background}>
-        <FundoHero background={background}>
+      <Header $background={background}>
+        <FundoHero $background={background}>
           <img src={logo} alt="efood" />
           {isHome && (
             <TextHero>
