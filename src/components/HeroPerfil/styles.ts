@@ -21,13 +21,14 @@ export const FundoHero = styled.header<CardProps>`
   justify-content: center;
   gap: 710px;
 
-  p {
+  a {
     font-family: Roboto;
     font-size: 18px;
     font-weight: 900;
     line-height: 21.09px;
     text-align: center;
     margin-bottom: 25px;
+    cursor: pointer;
   }
 
   img {

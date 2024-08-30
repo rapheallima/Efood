@@ -1,7 +1,6 @@
 import { Lista } from '../../../styles';
 import FoodsList from '../../FoodsList';
-
-import { useEffect, useState } from 'react';
+import { useGetHomeQuery } from '../../../services/api';
 
 export type CardapioItem = {
   foto: string;
@@ -24,21 +23,19 @@ export type Restaurante = {
 };
 
 const Home = () => {
-  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
+  const { data: onHome } = useGetHomeQuery();
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res));
-  }, []);
+  if (onHome) {
+    return (
+      <>
+        <Lista>
+          <FoodsList background="white" pratos={onHome || []} />
+        </Lista>
+      </>
+    );
+  }
 
-  return (
-    <>
-      <Lista>
-        <FoodsList background="white" pratos={restaurantes} />
-      </Lista>
-    </>
-  );
+  return <h4>Carregando...</h4>;
 };
 
 export default Home;

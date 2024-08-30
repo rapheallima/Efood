@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Foods from '../Foods';
 import { Container, List, Modal, ModalContent, CloseButton } from './styles';
 import { CardapioItem } from '../pages/Home';
+import { useDispatch } from 'react-redux';
+
+import { add } from '../../store/reducers/cart';
 
 export type Props = {
   pratos: CardapioItem[];
@@ -24,6 +27,22 @@ const Cardapio = ({ pratos, background }: Props) => {
       style: 'currency',
       currency: 'BRL',
     }).format(price);
+  };
+
+  const dispatch = useDispatch();
+
+  const createRestauranteFromItem = (item: CardapioItem): CardapioItem => ({
+    foto: item.foto,
+    preco: item.preco,
+    id: item.id,
+    nome: item.nome,
+    descricao: item.descricao,
+    porcao: item.porcao,
+  });
+
+  const addToCart = (item: CardapioItem) => {
+    const restauranteItem = createRestauranteFromItem(item);
+    dispatch(add(restauranteItem));
   };
 
   return (
@@ -59,9 +78,9 @@ const Cardapio = ({ pratos, background }: Props) => {
               Serve {selectedPrato.porcao}
               <br />
               <br />
-              <span>
+              <a onClick={() => addToCart(selectedPrato)}>
                 Adicionar ao carrinho - {formatPrice(selectedPrato.preco)}
-              </span>
+              </a>
             </p>
           </ModalContent>
         </Modal>

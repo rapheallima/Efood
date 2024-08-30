@@ -45,7 +45,7 @@ export const ModalContent = styled.div<{ background: 'white' | 'orange' }>`
     padding-left: 24px;
     line-height: 22px;
 
-    > span {
+    > a {
       background-color: ${cores.bege};
       color: ${cores.laranja};
       font-family: Roboto;
@@ -53,6 +53,7 @@ export const ModalContent = styled.div<{ background: 'white' | 'orange' }>`
       font-weight: 700;
       text-align: center;
       padding: 4px;
+      cursor: pointer;
     }
   }
 

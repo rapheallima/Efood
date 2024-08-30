@@ -1,37 +1,25 @@
-import { useEffect, useState } from 'react';
 import { Lista } from '../../../styles';
-
-import { Restaurante } from '../Home';
-import { useParams } from 'react-router-dom';
+import { useGetPratosQuery } from '../../../services/api';
 import Cardapio from '../../Cardapio';
 import Banner from '../../Banner';
+import { useParams } from 'react-router-dom';
 
 const Perfil = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
+  const { data: restaurantes } = useGetPratosQuery(id || '');
 
-  const [restaurante, setRestaurante] = useState<Restaurante | null>(null);
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurante(res))
-      .catch((error) => {
-        console.error('Erro ao buscar o restaurante:', error);
-      });
-  }, [id]);
-
-  if (!restaurante) {
-    return <h3>Carregando...</h3>;
+  if (restaurantes) {
+    return (
+      <>
+        <Lista>
+          <Banner prato={restaurantes} />
+          <Cardapio background="orange" pratos={restaurantes.cardapio} />
+        </Lista>
+      </>
+    );
   }
 
-  return (
-    <>
-      <Lista>
-        <Banner prato={restaurante} />
-        <Cardapio background="orange" pratos={restaurante.cardapio} />
-      </Lista>
-    </>
-  );
+  return <h4>Carregando...</h4>;
 };
 
 export default Perfil;
