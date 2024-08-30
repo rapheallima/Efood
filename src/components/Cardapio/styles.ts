@@ -54,6 +54,15 @@ export const ModalContent = styled.div<{ background: 'white' | 'orange' }>`
       text-align: center;
       padding: 4px;
       cursor: pointer;
+      transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    a:active {
+      background-color: ${cores.laranja};
+      color: ${cores.bege};
+      transform: translateY(2px);
     }
   }
 
