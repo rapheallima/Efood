@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { cores } from '../../styles';
+import { breakpoints, cores } from '../../styles';
 
 export const Image = styled.div`
   width: 100%;
@@ -16,6 +16,10 @@ export const ContainerPerfil = styled.div`
   width: 1030px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 88%;
+  }
 `;
 
 export const Title = styled.h2`

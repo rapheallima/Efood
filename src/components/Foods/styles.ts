@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { cores } from '../../styles';
+import { breakpoints, cores } from '../../styles';
 
 export type CardProps = {
   $background: 'white' | 'orange';
@@ -17,13 +17,17 @@ export const Card = styled.div<CardProps>`
   margin: auto;
   display: flex;
   flex-direction: column;
-
   position: relative;
 
   > img {
     width: 100%;
     height: ${({ $background }) =>
       $background === 'white' ? '217px' : '167px'};
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: ${({ $background }) => ($background === 'white' ? '392px' : '')};
+    height: ${({ $background }) => ($background === 'white' ? '420px' : '')};
   }
 `;
 

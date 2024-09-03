@@ -7,6 +7,11 @@ export const cores = {
   branca: '#fff',
 };
 
+export const breakpoints = {
+  desktop: '1023px',
+  tablet: '767px',
+};
+
 export const GlobalCss = createGlobalStyle`
   * {
     margin: 0;
@@ -39,8 +44,9 @@ export const GlobalCss = createGlobalStyle`
   margin: 0 auto;
   background-color: ${cores.cinza};
   border: 2px solid ${cores.bege};
-    }
   }
+}
+
 `;
 
 export const Container = styled.div`

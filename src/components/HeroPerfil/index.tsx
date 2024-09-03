@@ -1,4 +1,4 @@
-import { FundoHero, Header, StyledLink } from './styles';
+import { Car, FundoHero, Header, StyledLink } from './styles';
 import logo from '../../assets/images/logo.png';
 
 import { open } from '../../store/reducers/cart';
@@ -23,7 +23,7 @@ const Hero = ({ background }: Props) => {
         <FundoHero $background={background}>
           <StyledLink to="/">Restaurantes</StyledLink>
           <img src={logo} alt="efood" />
-          <a onClick={openCart}>{items.length} - produto(s) no carrinho</a>
+          <Car onClick={openCart}>{items.length} - produto(s) no carrinho</Car>
         </FundoHero>
       </Header>
     </>

@@ -66,7 +66,7 @@ const Cardapio = ({ pratos, background }: Props) => {
         ))}
       </List>
       {selectedPrato && (
-        <Modal>
+        <Modal onClick={handleCloseModal}>
           <ModalContent background={background}>
             <CloseButton onClick={handleCloseModal}>X</CloseButton>
             <img src={selectedPrato.foto} alt="Enlarged view" />

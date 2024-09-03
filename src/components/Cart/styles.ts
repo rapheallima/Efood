@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { cores } from '../../styles';
+import { breakpoints, cores } from '../../styles';
 
 export type ButtonContainerProps = {
   size?: 'small' | 'big';
@@ -29,6 +29,10 @@ export const CartContainer = styled.div`
   &.is-open {
     display: flex;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 61%;
+  }
 `;
 
 export const Sidebar = styled.aside`
@@ -36,6 +40,10 @@ export const Sidebar = styled.aside`
   z-index: 1;
   padding: 32px 8px 0 8px;
   width: 360px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 61%;
+  }
 `;
 
 export const Prices = styled.p`
@@ -114,5 +122,9 @@ export const ContainerLi = styled.li`
     width: 16px;
     height: 16px;
     cursor: pointer;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
   }
 `;

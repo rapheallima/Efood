@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { CardProps } from '../Foods/styles';
-import { cores } from '../../styles';
+import { breakpoints, cores } from '../../styles';
 
 export const Container = styled.section<CardProps>`
   width: 100%;
@@ -16,6 +16,14 @@ export const List = styled.ul<CardProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${({ $background }) => ($background === 'white' ? '48px 80px' : '32px')};
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Modal = styled.div`
@@ -29,6 +37,10 @@ export const Modal = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1000;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 61%;
+  }
 `;
 
 export const ModalContent = styled.div<{ background: 'white' | 'orange' }>`
@@ -69,6 +81,23 @@ export const ModalContent = styled.div<{ background: 'white' | 'orange' }>`
   > img {
     width: 280px;
     height: 280px;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    flex-direction: column;
+    align-items: center;
+
+    > p {
+      padding-left: 0;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    > img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 16px;
+    }
   }
 `;
 

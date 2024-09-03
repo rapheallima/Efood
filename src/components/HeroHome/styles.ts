@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import fundo from '../../assets/images/Vector.png';
-import { cores } from '../../styles';
 
 import { CardProps } from '../Foods/styles';
+import { breakpoints, cores } from '../../styles';
 
 export const Header = styled.div<CardProps>`
   display: flex;
@@ -45,6 +45,13 @@ export const TextHero = styled.h1`
   text-align: center;
   color: ${cores.laranja};
   width: 539px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 26px;
+    font-weight: 700;
+    width: 409px;
+    line-height: 32.19px;
+  }
 `;
 
 export const Links = styled.div`
