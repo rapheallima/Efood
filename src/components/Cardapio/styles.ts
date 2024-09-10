@@ -40,7 +40,7 @@ export const Modal = styled.div`
   z-index: 1000;
 
   @media (max-width: ${breakpoints.tablet}) {
-    max-width: 100%;
+    max-width: 61%;
   }
 `;
 
