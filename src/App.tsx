@@ -6,6 +6,8 @@ import { Container as AppContainer, GlobalCss, Lista } from './styles';
 import Rotas from './routes';
 import { store } from './store';
 import Cart from './components/Cart';
+import Delivery from './components/Delivery';
+import Payment from './components/Payment';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           </Lista>
         </AppContainer>
         <Cart />
+        <Delivery />
+        <Payment />
       </BrowserRouter>
     </Provider>
   );

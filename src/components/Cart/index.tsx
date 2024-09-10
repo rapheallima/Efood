@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../../store';
 import { close, remove } from '../../store/reducers/cart';
+import { open as openDelivery } from '../../store/reducers/delivery';
 
 const Cart = () => {
   const formatPrice = (price: number) => {
@@ -38,6 +39,10 @@ const Cart = () => {
     dispatch(remove(id));
   };
 
+  const goToDelivery = () => {
+    dispatch(openDelivery());
+  };
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
@@ -63,8 +68,9 @@ const Cart = () => {
           size="big"
           title="Clique aqui para continuar com a compra"
           type="button"
+          onClick={goToDelivery}
         >
-          Continuar com a compra
+          Continuar com a entrega
         </ButtonContainer>
       </Sidebar>
     </CartContainer>

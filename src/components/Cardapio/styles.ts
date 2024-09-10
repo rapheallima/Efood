@@ -10,6 +10,7 @@ export const Container = styled.section<CardProps>`
   padding: ${({ $background }) => ($background === 'white' ? '24px' : '16px')};
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 `;
 
 export const List = styled.ul<CardProps>`
@@ -39,7 +40,7 @@ export const Modal = styled.div`
   z-index: 1000;
 
   @media (max-width: ${breakpoints.tablet}) {
-    max-width: 61%;
+    max-width: 100%;
   }
 `;
 
@@ -47,8 +48,10 @@ export const ModalContent = styled.div<{ background: 'white' | 'orange' }>`
   background: ${cores.laranja};
   position: relative;
   padding: 32px;
-  width: 1024px;
-  height: 344px;
+  width: 90%;
+  max-width: 1024px;
+  height: auto;
+  max-height: 90vh;
   overflow: auto;
   display: flex;
 
@@ -69,6 +72,12 @@ export const ModalContent = styled.div<{ background: 'white' | 'orange' }>`
       transition:
         background-color 0.2s ease,
         transform 0.2s ease;
+
+      @media (max-width: ${breakpoints.tablet}) {
+        padding: 8px 16px;
+        display: inline-block;
+        text-decoration: none;
+      }
     }
 
     a:active {
