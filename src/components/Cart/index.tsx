@@ -68,7 +68,10 @@ const Cart = () => {
           size="big"
           title="Clique aqui para continuar com a compra"
           type="button"
-          onClick={goToDelivery}
+          onClick={() => {
+            goToDelivery();
+            closeCart();
+          }}
         >
           Continuar com a entrega
         </ButtonContainer>

@@ -35,6 +35,7 @@ export const GlobalCss = createGlobalStyle`
     font-size: 14px;
     line-height: 22px;
     font-style: normal;
+    overflow-x: hidden;
 
 
     .container {
@@ -44,6 +45,7 @@ export const GlobalCss = createGlobalStyle`
   margin: 0 auto;
   background-color: ${cores.cinza};
   border: 2px solid ${cores.bege};
+  overflow-x: hidden;
   }
 }
 
@@ -57,6 +59,7 @@ export const Container = styled.div`
   background-color: ${cores.cinza};
   border: 2px solid ${cores.bege};
   align-items: center;
+  overflow-x: hidden;
 `;
 
 export const Lista = styled.div`

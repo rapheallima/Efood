@@ -83,6 +83,7 @@ const Delivery = () => {
             <div>
               <label htmlFor="fullName">Quem irá receber</label>
               <input
+                className="input"
                 id="fullName"
                 type="text"
                 name="fullName"
@@ -97,6 +98,7 @@ const Delivery = () => {
             <div>
               <label htmlFor="address">Endereço</label>
               <input
+                className="input"
                 id="address"
                 type="text"
                 name="address"
@@ -111,6 +113,7 @@ const Delivery = () => {
             <div>
               <label htmlFor="city">Cidade</label>
               <input
+                className="input"
                 id="city"
                 type="text"
                 name="city"
@@ -154,6 +157,7 @@ const Delivery = () => {
             <div className="complement">
               <label htmlFor="complement">Complemento (Opcional)</label>
               <input
+                className="input"
                 id="complement"
                 type="text"
                 name="complement"
@@ -171,7 +175,10 @@ const Delivery = () => {
             size="big"
             title="Continuar com o pagamento"
             type="submit"
-            onClick={goToPayment}
+            onClick={() => {
+              closeDelivery();
+              goToPayment();
+            }}
             disabled={!form.isValid || !form.touched}
           >
             Continuar com o pagamento

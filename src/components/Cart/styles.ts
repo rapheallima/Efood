@@ -31,7 +31,7 @@ export const CartContainer = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    width: 61%;
+    width: 100vw;
   }
 `;
 

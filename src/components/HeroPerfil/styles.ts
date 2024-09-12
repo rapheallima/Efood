@@ -3,7 +3,7 @@ import fundo from '../../assets/images/Vector.png';
 
 import { CardProps } from '../Foods/styles';
 import { Link } from 'react-router-dom';
-import { breakpoints } from '../../styles';
+import { breakpoints, cores } from '../../styles';
 
 export const Header = styled.div<CardProps>`
   display: flex;
@@ -28,6 +28,19 @@ export const FundoHero = styled.header<CardProps>`
     margin-bottom: 25px;
     position: absolute;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      left: 90px;
+      width: 90px;
+      height: 40.5px;
+    }
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -44,8 +57,7 @@ export const StyledLink = styled(Link)`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    position: absolute;
-    left: 24px;
+    display: none;
   }
 `;
 
@@ -60,11 +72,34 @@ export const Car = styled.a`
 
   @media (max-width: ${breakpoints.desktop}) {
     position: absolute;
-    left: 590px;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    position: absolute;
-    left: 290px;
+    flex: 1;
+    justify-content: space-between;
+    left: 220px;
+    font-size: 16px;
+
+    span {
+      display: none;
+    }
+  }
+`;
+
+export const Hamburguer = styled.div`
+  width: 32px;
+  position: absolute;
+  bottom: 90px;
+
+  span {
+    height: 2px;
+    display: block;
+    width: 100%;
+    background-color: ${cores.laranja};
+    margin-bottom: 4px;
+  }
+
+  @media (min-width: ${breakpoints.tablet}) {
+    display: none;
   }
 `;

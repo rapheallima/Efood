@@ -88,6 +88,7 @@ const Payment = () => {
           <div>
             <label htmlFor="nameCard">Nome no cartão</label>
             <input
+              className="NameCard"
               id="nameCard"
               type="text"
               name="nameCard"
@@ -132,7 +133,7 @@ const Payment = () => {
           <div className="space">
             <label htmlFor="expiresMonth">Mês de vencimento</label>
             <input
-              className="Monthyear"
+              className="Month"
               id="expiresMonth"
               type="text"
               name="expiresMonth"
@@ -147,7 +148,7 @@ const Payment = () => {
           <div className="Validate">
             <label htmlFor="expiresYear">Ano de vencimento</label>
             <input
-              className="Monthyear"
+              className="Year"
               id="expiresYear"
               type="text"
               name="expiresYear"
@@ -160,22 +161,25 @@ const Payment = () => {
             </small>
           </div>
         </Row>
-        {/* Inputs e labels */}
-        <ButtonContainer
-          size="big"
-          title="Continuar com o pagamento"
-          type="submit"
-        >
-          Finalizar pagamento
-        </ButtonContainer>
-        <ButtonContainer
-          size="big"
-          title="Voltar ao carrinho"
-          type="button"
-          onClick={goToDelivery}
-        >
-          Voltar para a edição de endereço
-        </ButtonContainer>
+        <Row>
+          <ButtonContainer
+            size="big"
+            title="Continuar com o pagamento"
+            type="submit"
+          >
+            Finalizar pagamento
+          </ButtonContainer>
+        </Row>
+        <Row>
+          <ButtonContainer
+            size="big"
+            title="Voltar ao carrinho"
+            type="button"
+            onClick={goToDelivery}
+          >
+            Voltar para a edição de endereço
+          </ButtonContainer>
+        </Row>
       </Sidebar>
     </CartContainer>
   );

@@ -11,7 +11,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: #000;
   opacity: 0.7;
   cursor: pointer;
 `;
@@ -23,11 +23,11 @@ export const CartContainer = styled.div`
   width: 100%;
   height: 100%;
   display: none;
-  justify-content: flex-end;
   z-index: 1;
 
   &.is-open {
     display: flex;
+    justify-content: right;
   }
 
   h2 {
@@ -38,6 +38,10 @@ export const CartContainer = styled.div`
     line-height: 18.75px;
     color: ${cores.bege};
     padding-bottom: 16px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 11px;
+    }
   }
 
   label {
@@ -49,10 +53,17 @@ export const CartContainer = styled.div`
     color: ${cores.bege};
     display: block;
     padding-bottom: 8px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 11px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 94px;
+    }
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    width: 61%;
+    width: 100vh;
   }
 `;
 
@@ -62,8 +73,15 @@ export const Sidebar = styled.aside`
   padding: 32px 8px 0 8px;
   width: 360px;
 
+  div {
+    @media (max-width: ${breakpoints.tablet}) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   @media (max-width: ${breakpoints.tablet}) {
-    width: 61%;
+    width: 84.8%;
   }
 `;
 
@@ -82,29 +100,65 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   cursor: pointer;
   width: 100%;
   margin-bottom: 8px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 26%;
+  }
 `;
 
 export const Row = styled.form`
   display: flex;
 
+  .NameCard {
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 180px;
+    }
+  }
+
   .NumCard {
     width: 228px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 90px;
+    }
   }
 
   .CVV {
     width: 87px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 83px;
+    }
   }
 
-  .Monthyear {
+  .Month {
     width: 155px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 90px;
+      display: block;
+    }
+  }
+
+  .Year {
+    width: 155px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 83px;
+      display: block;
+    }
   }
 
   .space {
     padding-right: 34px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      padding-right: 3px;
+    }
   }
 
   .spaceCard {
-    padding-right: 30px;
+    padding-right: 3px;
   }
 
   .Validate {
@@ -120,5 +174,9 @@ export const Row = styled.form`
     height: 32px;
     background-color: ${cores.bege};
     border: ${cores.bege};
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 61%;
+    }
   }
 `;
