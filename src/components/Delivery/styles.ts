@@ -91,7 +91,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   margin-bottom: 8px;
 `;
 
-export const Row = styled.form`
+export const Row = styled.div`
   display: flex;
 
   .input {

@@ -16,6 +16,17 @@ export const Overlay = styled.div`
   cursor: pointer;
 `;
 
+export const OverlayConfirm = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  opacity: 0.7;
+  cursor: pointer;
+`;
+
 export const CartContainer = styled.div`
   position: fixed;
   top: 0;
@@ -42,6 +53,11 @@ export const CartContainer = styled.div`
     @media (max-width: ${breakpoints.tablet}) {
       font-size: 11px;
     }
+  }
+
+  p {
+    color: ${cores.bege};
+    padding-bottom: 24px;
   }
 
   label {
@@ -106,7 +122,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   }
 `;
 
-export const Row = styled.form`
+export const Row = styled.div`
   display: flex;
 
   .NameCard {
@@ -158,7 +174,7 @@ export const Row = styled.form`
   }
 
   .spaceCard {
-    padding-right: 3px;
+    padding-right: 30px;
   }
 
   .Validate {

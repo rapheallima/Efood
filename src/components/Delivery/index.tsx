@@ -1,22 +1,23 @@
 import {
   Overlay,
-  CartContainer, // Reutilize este estilo ou crie um novo, se preferir
+  CartContainer,
   Sidebar,
   ButtonContainer,
   Row,
-} from './styles'; // Reutilize ou crie novos estilos conforme necessário
-
+} from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../../store';
 import { close } from '../../store/reducers/delivery';
-import { open as openCart } from '../../store/reducers/cart';
 import { open as openPayment } from '../../store/reducers/payment';
+import { open as openCart } from '../../store/reducers/cart';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { usePurchaseMutation } from '../../services/api';
 
 const Delivery = () => {
   const { isOpen } = useSelector((state: RootReducer) => state.delivery);
   const dispatch = useDispatch();
+  const [purchase] = usePurchaseMutation();
 
   const closeDelivery = () => {
     dispatch(close());
@@ -62,9 +63,37 @@ const Delivery = () => {
       ),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      purchase({
+        delivery: {
+          receiver: values.fullName,
+          address: {
+            description: values.address,
+            city: values.city,
+            zipCode: values.cep,
+            number: Number(values.number),
+            complement: values.complement,
+          },
+        },
+        payment: {
+          card: {
+            name: '',
+            number: '',
+            code: 0,
+            expires: { month: 1, year: 2024 },
+          },
+        },
+        products: [
+          {
+            id: 1,
+            price: 10,
+          },
+        ],
+      });
+      goToPayment();
+      closeDelivery();
     },
   });
+
   const getErrorMessage = (fieldName: string, message?: string) => {
     const touch = fieldName in form.touched;
     const invalid = fieldName in form.errors;
@@ -170,15 +199,10 @@ const Delivery = () => {
               </small>
             </div>
           </Row>
-          {/* Inputs e labels */}
           <ButtonContainer
             size="big"
             title="Continuar com o pagamento"
             type="submit"
-            onClick={() => {
-              closeDelivery();
-              goToPayment();
-            }}
             disabled={!form.isValid || !form.touched}
           >
             Continuar com o pagamento
