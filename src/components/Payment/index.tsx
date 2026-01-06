@@ -1,3 +1,12 @@
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootReducer } from '../../store';
+import { close } from '../../store/reducers/payment';
+import { open as openDelivery } from '../../store/reducers/delivery';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { usePurchaseMutation } from '../../services/api';
+
 import {
   Overlay,
   CartContainer,
@@ -6,35 +15,22 @@ import {
   Row,
   OverlayConfirm,
 } from './styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootReducer } from '../../store';
-import { close } from '../../store/reducers/payment';
-import { open as openDelivery } from '../../store/reducers/delivery';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { usePurchaseMutation } from '../../services/api';
-import { useState } from 'react';
 
 const Payment = () => {
   const [isConfirmationOpen, setConfirmationOpen] = useState(false);
   const [orderId, setOrderId] = useState<number | null>(null);
-
   const { items } = useSelector((state: RootReducer) => state.cart);
   const { isOpen } = useSelector((state: RootReducer) => state.payment);
-
   const dispatch = useDispatch();
   const [purchase] = usePurchaseMutation();
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
+  const formatPrice = (price: number) =>
+    new Intl.NumberFormat('pt-BR', {
       style: 'currency',
       currency: 'BRL',
     }).format(price);
-  };
 
-  const getTotalPrice = () => {
-    return items.reduce((acc, item) => acc + item.preco, 0);
-  };
+  const getTotalPrice = () => items.reduce((acc, val) => acc + val.preco, 0);
 
   const closePayment = () => {
     setConfirmationOpen(false);
@@ -56,53 +52,49 @@ const Payment = () => {
       expiresYear: '',
     },
     validationSchema: Yup.object({
-      nameCard: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .required('O campo é obrigatório'),
-
-      numberCard: Yup.string()
-        .length(16, 'O cartão precisa ter exatamente 16 caracteres')
-        .required('O campo é obrigatório'),
-
-      validate: Yup.string()
-        .length(3, 'O CVV precisa ter exatamente 3 caracteres')
-        .required('O campo é obrigatório'),
-
-      expiresMonth: Yup.number()
-        .min(1, 'O mês deve ser entre 1 e 12')
-        .max(12, 'O mês deve ser entre 1 e 12')
-        .required('O campo é obrigatório'),
-
+      nameCard: Yup.string().min(5).required(),
+      numberCard: Yup.string().length(16).required(),
+      validate: Yup.string().length(3).required(),
+      expiresMonth: Yup.number().min(1).max(12).required(),
       expiresYear: Yup.number()
-        .min(new Date().getFullYear(), 'O ano deve ser o atual ou posterior')
-        .max(
-          new Date().getFullYear() + 20,
-          'O ano não pode ser mais de 20 anos à frente',
-        )
-        .required('O campo é obrigatório'),
+        .min(new Date().getFullYear())
+        .max(new Date().getFullYear() + 20)
+        .required(),
     }),
-
-    onSubmit: async () => {
+    onSubmit: async (values) => {
       try {
-        const response = await purchase();
+        const response = await purchase({
+          payment: {
+            card: {
+              name: values.nameCard,
+              number: values.numberCard,
+              code: Number(values.validate),
+              expires: {
+                month: Number(values.expiresMonth),
+                year: Number(values.expiresYear),
+              },
+            },
+          },
+          delivery: {
+            receiver: '',
+            address: {
+              description: '',
+              city: '',
+              zipCode: '',
+              number: 0,
+              complement: '',
+            },
+          },
+          products: items.map((item) => ({ id: item.id, price: item.preco })),
+        });
 
-        if (response?.data?.orderId) {
-          setOrderId(response.data.orderId);
-          setConfirmationOpen(true);
-        }
+        setOrderId(response.data.orderId);
+        setConfirmationOpen(true);
       } catch (error) {
         console.error(error);
       }
     },
   });
-
-  const getErrorMessage = (fieldName: string, message?: string) => {
-    const touched = fieldName in form.touched;
-    const invalid = fieldName in form.errors;
-
-    if (touched && invalid) return message;
-    return '';
-  };
 
   return (
     <>
@@ -117,15 +109,9 @@ const Payment = () => {
                 <label htmlFor="nameCard">Nome no cartão</label>
                 <input
                   id="nameCard"
-                  name="nameCard"
                   type="text"
-                  value={form.values.nameCard}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
+                  {...form.getFieldProps('nameCard')}
                 />
-                <small>
-                  {getErrorMessage('nameCard', form.errors.nameCard)}
-                </small>
               </div>
             </Row>
 
@@ -134,74 +120,47 @@ const Payment = () => {
                 <label htmlFor="numberCard">Número do cartão</label>
                 <input
                   id="numberCard"
-                  name="numberCard"
                   type="text"
-                  value={form.values.numberCard}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
+                  {...form.getFieldProps('numberCard')}
                 />
-                <small>
-                  {getErrorMessage('numberCard', form.errors.numberCard)}
-                </small>
               </div>
-
               <div>
                 <label htmlFor="validate">CVV</label>
                 <input
                   id="validate"
-                  name="validate"
                   type="text"
-                  value={form.values.validate}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
+                  {...form.getFieldProps('validate')}
                 />
-                <small>
-                  {getErrorMessage('validate', form.errors.validate)}
-                </small>
               </div>
             </Row>
 
             <Row>
               <div>
-                <label htmlFor="expiresMonth">Mês de vencimento</label>
+                <label htmlFor="expiresMonth">Mês</label>
                 <input
                   id="expiresMonth"
-                  name="expiresMonth"
                   type="text"
-                  value={form.values.expiresMonth}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
+                  {...form.getFieldProps('expiresMonth')}
                 />
-                <small>
-                  {getErrorMessage('expiresMonth', form.errors.expiresMonth)}
-                </small>
               </div>
-
               <div>
-                <label htmlFor="expiresYear">Ano de vencimento</label>
+                <label htmlFor="expiresYear">Ano</label>
                 <input
                   id="expiresYear"
-                  name="expiresYear"
                   type="text"
-                  value={form.values.expiresYear}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
+                  {...form.getFieldProps('expiresYear')}
                 />
-                <small>
-                  {getErrorMessage('expiresYear', form.errors.expiresYear)}
-                </small>
               </div>
             </Row>
 
             <Row>
-              <ButtonContainer size="big" type="submit">
+              <ButtonContainer type="submit">
                 Finalizar pagamento
               </ButtonContainer>
             </Row>
-
             <Row>
-              <ButtonContainer size="big" type="button" onClick={goToDelivery}>
-                Voltar para a edição de endereço
+              <ButtonContainer type="button" onClick={goToDelivery}>
+                Voltar para endereço
               </ButtonContainer>
             </Row>
           </Sidebar>
@@ -212,17 +171,9 @@ const Payment = () => {
         <CartContainer className="is-open">
           <OverlayConfirm onClick={closePayment} />
           <Sidebar>
-            <h2>Pedido realizado - #{orderId}</h2>
-            <p>
-              Seu pedido foi realizado com sucesso e já está sendo preparado.
-              <br />
-              <br />
-              Em breve ele será entregue no endereço informado.
-              <br />
-              <br />
-              Obrigado por comprar conosco!
-            </p>
-            <ButtonContainer size="big" type="button" onClick={closePayment}>
+            <h2>Pedido realizado - {orderId}</h2>
+            <p>Seu pedido está em processamento!</p>
+            <ButtonContainer type="button" onClick={closePayment}>
               Concluir
             </ButtonContainer>
           </Sidebar>
