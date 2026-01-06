@@ -51,9 +51,7 @@ const api = createApi({
       }),
     }),
   }),
-})
-
-
+});
 
 export const { useGetHomeQuery, useGetPratosQuery, usePurchaseMutation } = api;
 
