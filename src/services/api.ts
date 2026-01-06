@@ -25,3 +25,6 @@ export const usePurchaseMutation = () => {
     { isLoading: false, isSuccess: true, error: null },
   ] as const;
 };
+
+const api = {};
+export default api;
