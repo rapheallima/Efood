@@ -6,3 +6,12 @@ export const useGetHomeQuery = () => ({
   isLoading: false,
   error: null,
 });
+
+export const usePurchaseMutation = () => {
+  return [
+    async () => {
+      return { data: { orderId: 1 } };
+    },
+    { isLoading: false, isSuccess: true, error: null },
+  ] as const;
+};
