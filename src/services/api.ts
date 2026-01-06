@@ -32,8 +32,9 @@ type PurchasePayload = {
 };
 
 const api = createApi({
+  reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fake-api-tau.vercel.app/api/efood',
+    baseUrl: '/api/efood',
   }),
   endpoints: (builder) => ({
     getHome: builder.query<Restaurante[], void>({
@@ -50,7 +51,9 @@ const api = createApi({
       }),
     }),
   }),
-});
+})
+
+
 
 export const { useGetHomeQuery, useGetPratosQuery, usePurchaseMutation } = api;
 
