@@ -1,3 +1,7 @@
+export const config = {
+  runtime: 'nodejs18.x',
+};
+
 export default async function handler(req, res) {
   const path = req.query.path ? req.query.path.join('/') : '';
   const url = `https://fake-api-tau.vercel.app/api/efood/${path}`;
