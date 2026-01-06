@@ -7,6 +7,16 @@ export const useGetHomeQuery = () => ({
   error: null,
 });
 
+export const useGetPratosQuery = (id: string) => {
+  const restaurante = restaurantes.find((r) => String(r.id) === id);
+
+  return {
+    data: restaurante as unknown as Restaurante,
+    isLoading: false,
+    error: null,
+  };
+};
+
 export const usePurchaseMutation = () => {
   return [
     async () => {
