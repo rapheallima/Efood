@@ -1,6 +1,6 @@
 // src/services/api.ts (mock simplificado)
 import { Restaurante } from '../components/pages/Home';
-import { restaurantes } from '../mocks/restauramtes';
+import { restaurantes } from '../mocks/restaurantes';
 
 // Mock para a Home
 export const useGetHomeQuery = () => ({
