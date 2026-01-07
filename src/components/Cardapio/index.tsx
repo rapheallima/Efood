@@ -75,7 +75,7 @@ const Cardapio = ({ pratos, background }: Props) => {
               <br />
               {selectedPrato.descricao} <br />
               <br />
-              Serve {selectedPrato.porcao}
+              Serve {selectedPrato.porcao} pessoa(s)
               <br />
               <br />
               <a onClick={() => addToCart(selectedPrato)}>

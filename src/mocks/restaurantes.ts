@@ -2,96 +2,116 @@ export const restaurantes = [
   {
     id: 1,
     titulo: 'Pizza Place',
-    descricao: 'As melhores pizzas da cidade',
+    descricao:
+      'As melhores pizzas da cidade, feitas com ingredientes frescos e massa artesanal.',
     avaliacao: 4.5,
     tipo: 'Italiana',
-    capa: 'https://images.unsplash.com/photo-1564936281403-f92f66f89ee0?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    capa: 'https://images.unsplash.com/photo-1564936281403-f92f66f89ee0?q=80&w=1450&auto=format&fit=crop',
     cardapio: [
       {
         id: 101,
         nome: 'Pizza Margherita',
-        descricao: 'Molho, mussarela e manjericão',
+        descricao:
+          'Molho de tomate artesanal, mussarela fresca, manjericão selecionado e um toque de azeite extra virgem.',
+        porcao: 2,
         preco: 39.9,
-        foto: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        foto: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1738&auto=format&fit=crop',
       },
       {
         id: 102,
         nome: 'Pizza Pepperoni',
-        descricao: 'Molho, mussarela e pepperoni',
+        descricao:
+          'Molho de tomate, mussarela premium, fatias generosas de pepperoni e orégano fresco.',
+        porcao: 2,
         preco: 45.0,
-        foto: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        foto: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1160&auto=format&fit=crop',
       },
     ],
   },
   {
     id: 2,
     titulo: 'Burger Joint',
-    descricao: 'Hambúrgueres suculentos e artesanais',
+    descricao:
+      'Hambúrgueres suculentos e artesanais, preparados com carnes selecionadas e acompanhamentos frescos.',
     avaliacao: 4.7,
     tipo: 'Americana',
-    capa: 'https://images.unsplash.com/photo-1566380055434-1dfac9eb516d?q=80&w=1880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    capa: 'https://images.unsplash.com/photo-1566380055434-1dfac9eb516d?q=80&w=1880&auto=format&fit=crop',
     cardapio: [
       {
         id: 201,
         nome: 'Cheeseburger',
-        descricao: 'Carne suculenta, queijo e bacon',
+        descricao:
+          'Carne suculenta, queijo cheddar derretido, bacon crocante, alface fresca e molho especial da casa.',
+        porcao: 1,
         preco: 29.9,
-        foto: 'https://images.unsplash.com/photo-1605789538467-f715d58e03f9?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        foto: 'https://images.unsplash.com/photo-1605789538467-f715d58e03f9?q=80&w=1742&auto=format&fit=crop',
       },
       {
         id: 202,
         nome: 'Veggie Burger',
-        descricao: 'Hambúrguer vegetal com salada fresca',
+        descricao:
+          'Hambúrguer de grão-de-bico, alface crocante, tomate orgânico, cebola caramelizada e molho especial de ervas.',
+        porcao: 1,
         preco: 27.0,
-        foto: 'https://images.unsplash.com/photo-1546441471-c81f0586d0a9?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        foto: 'https://images.unsplash.com/photo-1546441471-c81f0586d0a9?q=80&w=1744&auto=format&fit=crop',
       },
     ],
   },
   {
     id: 3,
     titulo: 'Sushi Bar',
-    descricao: 'Os melhores sushis e sashimis',
+    descricao:
+      'Os melhores sushis e sashimis, preparados com peixes frescos e técnicas tradicionais japonesas.',
     avaliacao: 4.8,
     tipo: 'Japonesa',
-    capa: 'https://images.unsplash.com/photo-1502364271109-0a9a75a2a9df?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=400&q=80',
+    capa: 'https://images.unsplash.com/photo-1502364271109-0a9a75a2a9df?q=80&w=1740&auto=format&fit=crop',
     cardapio: [
       {
         id: 301,
         nome: 'Sushi Salmão',
-        descricao: 'Salmão fresco com arroz e nori',
+        descricao:
+          'Sushi de salmão fresco, servido com arroz temperado, nori crocante e um toque de wasabi.',
+        porcao: 1,
         preco: 32.5,
-        foto: 'https://plus.unsplash.com/premium_photo-1668146932065-d08643791942?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=400&q=80',
+        foto: 'https://plus.unsplash.com/premium_photo-1668146932065-d08643791942?q=80&w=1740&auto=format&fit=crop',
       },
       {
         id: 302,
         nome: 'Sashimi Atum',
-        descricao: 'Atum fresco cortado em fatias finas',
+        descricao:
+          'Atum fresco cortado em fatias finas, servido com molho shoyu artesanal e gengibre em conserva.',
+        porcao: 1,
         preco: 35.0,
-        foto: 'https://images.unsplash.com/photo-1563612116625-3012372fccce?q=80&w=882&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=400&q=80',
+        foto: 'https://images.unsplash.com/photo-1563612116625-3012372fccce?q=80&w=882&auto=format&fit=crop',
       },
     ],
   },
   {
     id: 4,
     titulo: 'Taco Corner',
-    descricao: 'Tacos mexicanos autênticos e saborosos',
+    descricao:
+      'Tacos mexicanos autênticos, preparados com ingredientes frescos e temperos tradicionais.',
     avaliacao: 4.6,
     tipo: 'Mexicana',
-    capa: 'https://images.unsplash.com/photo-1719402399083-d42128832ff9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    capa: 'https://images.unsplash.com/photo-1719402399083-d42128832ff9?q=80&w=1740&auto=format&fit=crop',
     cardapio: [
       {
         id: 401,
         nome: 'Taco Carne',
-        descricao: 'Taco com carne temperada e molho especial',
+        descricao:
+          'Taco com carne temperada, molho especial da casa, alface crocante e queijo fresco.',
+        porcao: 1,
         preco: 22.5,
-        foto: 'https://images.unsplash.com/photo-1676560662899-253459ea7419?q=80&w=1736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        foto: 'https://images.unsplash.com/photo-1676560662899-253459ea7419?q=80&w=1736&auto=format&fit=crop',
       },
       {
         id: 402,
         nome: 'Taco Veggie',
-        descricao: 'Taco com legumes frescos e molho de abacate',
+        descricao:
+          'Taco recheado com legumes frescos, guacamole, pimentões coloridos e molho de abacate.',
+        porcao: 1,
         preco: 20.0,
-        foto: 'https://plus.unsplash.com/premium_photo-1681406995032-c3ceeb24d7f9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        foto: 'https://plus.unsplash.com/premium_photo-1681406995032-c3ceeb24d7f9?q=80&w=1740&auto=format&fit=crop',
       },
     ],
   },
